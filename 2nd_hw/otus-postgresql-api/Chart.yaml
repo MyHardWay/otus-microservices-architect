@@ -35,3 +35,11 @@ dependencies: # A list of the chart requirements (optional)
     tags:
       - otus-pg-database
 
+  - name: kube-prometheus-stack
+    repository: https://prometheus-community.github.io/helm-charts
+    version: 39.9.0
+    tags:
+      - otus-observability
+
+
+

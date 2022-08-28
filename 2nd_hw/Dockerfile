@@ -8,6 +8,7 @@ RUN apk add build-base
 RUN pip install -U Flask
 RUN pip install -U psycopg2-binary
 RUN pip install -U Flask-SQLAlchemy
+RUN pip install -U prometheus-client
 
 # copy files required for the app to run
 COPY app.py /usr/src/app/

@@ -19,6 +19,49 @@ postgresql:
     port: "5432"
 
 
+metrics:
+  serviceMonitor:
+    enabled: true
+
+grafana:
+  grafana.ini:
+    server:
+      domain: arch.homework
+      root_url: http://arch.homework/
+      serve_from_sub_path: true
+
+  #ingress:
+    ## If true, Grafana Ingress will be created
+    ##
+    #enabled: true
+
+    ## Annotations for Grafana Ingress
+    ##
+    #annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+
+    ## Labels to be added to the Ingress
+    ##
+    #labels: {}
+
+    ## Hostnames.
+    ## Must be provided if Ingress is enable.
+    ##
+    # hosts:
+    #   - grafana.domain.com
+    #hosts:
+    #  - arch.homework
+
+    ## Path for grafana ingress
+    #path: /grafana-ingress/
+
+
+
+#grafana:
+#  path: /monitoring/
+
+
 #postgresql:
 #  auth:
 #    postgresPassword: xDXLJdLkXf

@@ -13,6 +13,7 @@ app = Flask(__name__)
 import os
 from sqlalchemy import create_engine
 import json
+#from metrics import register_metrics
 engine = create_engine(os.environ.get('DATABASE_URI'), echo=True)
 rows = []
 connection = engine.connect()
@@ -49,6 +50,12 @@ def change_user(user_id):
     user_id = request.view_args['user_id']
     connection.execute('UPDATE users SET username = %s, firstname = %s WHERE id = %s', (content['username'], content['firstname'], user_id))
     return ('', 204)
+
+
+@app.route('/metrics')
+def metrics():
+    from prometheus_client import generate_latest
+    return generate_latest()
 
 
 if __name__ == "__main__":
