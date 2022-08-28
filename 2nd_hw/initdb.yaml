@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "otus-postgresql-api-migration"
+spec:
+  template:
+    metadata:
+      name: "create-insert-table"
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: post-install-job
+        image: postgres:latest
+        env:
+          - name: POSTGRES_PASSWORD
+            value: "passwd"
+        command:
+          - sh
+          - "-c"
+          - |
+            psql postgres://myuser:passwd@otus-postgresql-api-postgresql:5432/myapp <<'EOF'
+              create table users (id serial primary key, username varchar, firstname varchar);
+              insert into users (id, username, firstname) values (1, 'Konstantin', 'test');
+            EOF
+
+  backoffLimit: 0
