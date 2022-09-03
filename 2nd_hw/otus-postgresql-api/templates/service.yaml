@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: {{ include "otus-postgresql-api.fullname" . }}
   labels:
+    release: {{ $.Release.Name | quote }}
     {{- include "otus-postgresql-api.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
@@ -10,6 +11,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: 8000
       protocol: TCP
-      name: web-app
+      name: web
   selector:
     {{- include "otus-postgresql-api.selectorLabels" . | nindent 4 }}

@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-
+from metrics import register_metrics
 
 app = Flask(__name__)
 
@@ -60,4 +60,5 @@ def metrics():
 
 if __name__ == "__main__":
     # 'flask run --host=0.0.0.0' tells your operating system to listen on all public IPs.
+    register_metrics(app)
     app.run(host="0.0.0.0", port=8000)

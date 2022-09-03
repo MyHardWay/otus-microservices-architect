@@ -12,6 +12,7 @@ RUN pip install -U prometheus-client
 
 # copy files required for the app to run
 COPY app.py /usr/src/app/
+COPY metrics.py /usr/src/app/
 
 # tell the port number the container should expose
 EXPOSE 8000

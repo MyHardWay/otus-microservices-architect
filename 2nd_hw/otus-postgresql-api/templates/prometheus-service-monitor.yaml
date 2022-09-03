@@ -1,20 +1,21 @@
-{{- if .Values.metrics.serviceMonitor.enabled }}
+#{{- if .Values.metrics.serviceMonitor.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "otus-postgresql-api.fullname" . }}
+  name: otus-application-metrics
   labels:
+    release: {{ $.Release.Name | quote }}
     {{- include "otus-postgresql-api.labels" . | nindent 4 }}
 spec:
   jobLabel: {{ include "otus-postgresql-api.fullname" . }}
-  namespaceSelector:
-    matchNames:
-    - "{{ $.Release.Namespace }}"
+  #namespaceSelector:
+  #  matchNames:
+  #  - "{{ $.Release.Namespace }}"
   selector:
     matchLabels:
       {{- include "otus-postgresql-api.selectorLabels" . | nindent 6 }}
   endpoints:
   - interval: 15s
-    port: web-app
+    port: web
     path: /metrics
-{{- end }} 
+#{{- end }} 

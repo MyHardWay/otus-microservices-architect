@@ -19,6 +19,17 @@ postgresql:
     port: "5432"
 
 
+#prometheus:
+#  prometheusSpec:
+#    serviceMonitorSelectorNilUsesHelmValues: false
+
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+
+
 metrics:
   serviceMonitor:
     enabled: true
@@ -27,8 +38,8 @@ grafana:
   grafana.ini:
     server:
       domain: arch.homework
-      root_url: http://arch.homework/
-      serve_from_sub_path: true
+      root_url: http://arch.homework/grafana/
+      serve_from_sub_path: false
 
   #ingress:
     ## If true, Grafana Ingress will be created
