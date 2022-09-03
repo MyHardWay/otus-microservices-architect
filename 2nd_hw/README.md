@@ -28,3 +28,6 @@ dependencies: # A list of the chart requirements (optional)
 Устанавливаем нужные нам чарты
 helm dependency update
 
+# Grafana Dashobards
+
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
