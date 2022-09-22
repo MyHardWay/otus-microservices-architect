@@ -4,6 +4,10 @@ helm install otus-postgresql-api ./otus-postgresql-api/
 
 kubectl apply -f .
 
+# Паттерн Идемпотентности
+
+Идемпотентные операции
+
 
 # Постман коллекции
 
