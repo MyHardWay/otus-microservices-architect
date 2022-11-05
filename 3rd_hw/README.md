@@ -20,3 +20,5 @@
 
 
 #### Схема взаимодействия сервисов
+
+![alt text](https://github.com/MyHardWay/otus-microservices-architect/blob/main/3rd_hw/Схема.png)
